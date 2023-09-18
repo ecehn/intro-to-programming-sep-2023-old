@@ -10,5 +10,13 @@
 <h2> Shortcuts </h2>
 <p>
 - Ctrl + . : Quick actions and refactoring
-- Ctrl + , : Search filename within solution
+- Ctrl + ,  or Ctrl + T : Search filename within solution
+- Ctrl + Tab : Alt tabbing within VS
+- Ctrl + Alt + L : Jump to solution explorer
+- Ctrl + ; : Filter search in solution explorer
+- Ctrl + Q : Find settings/views/tools 
+- Ctrl + G : Go to a certain line in code
+- Ctrl + I or Ctrl + Shift + I : Iterate through searched variable
+- Ctrl + ] : Show scope of curly brace, can be used with parenthesis also
+- Alt + Shift + = or Alt + Shift + - : Highlight through selection
 </p>
