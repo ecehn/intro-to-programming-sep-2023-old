@@ -24,6 +24,7 @@
 - F12 : Jump to definition and Ctrl + - to return
 - Alt + F12 : Peek definition
 - Ctrl + K + S : Surround
+- Ctrl + Shift + V : Clipboard history
 </p>
 
 <h2> Topics </h2>
