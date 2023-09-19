@@ -13,7 +13,9 @@ public class Account
         return _balance;
     }
 
-    public void Withdraw(decimal amountToWithdraw)
+
+    // Before refactoring
+    /*public void Withdraw(decimal amountToWithdraw)
     {
         if (amountToWithdraw <= _balance)
         {
@@ -24,5 +26,20 @@ public class Account
             throw new OverdraftException();
         }
 
+    }*/
+
+    public void Withdraw(decimal amountToWithdraw)
+    {
+        GuardHasSufficientFunds(amountToWithdraw);
+        _balance -= amountToWithdraw;
+
+    }
+
+    private void GuardHasSufficientFunds(decimal amountToWithdraw)
+    {
+        if (amountToWithdraw > _balance)
+        {
+            throw new OverdraftException();
+        }
     }
 }
