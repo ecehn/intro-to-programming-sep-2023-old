@@ -19,4 +19,8 @@
 - Ctrl + I or Ctrl + Shift + I : Iterate through searched variable
 - Ctrl + ] : Show scope of curly brace, can be used with parenthesis also
 - Alt + Shift + = or Alt + Shift + - : Highlight through selection
+- Ctrl + R , let go of Crrl + A : Run all tests
 </p>
+
+<h2> Topics </h2>
+- Theory in testing
