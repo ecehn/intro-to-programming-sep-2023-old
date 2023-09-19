@@ -21,6 +21,8 @@
 - Alt + Shift + = or Alt + Shift + - : Highlight through selection
 - Ctrl + R , let go of Crrl + A : Run all tests
 - Ctrl + Shift + A : Add new class 
+- F12 : Jump to definition and Ctrl + - to return
+- Alt + F12 : Peek definition
 </p>
 
 <h2> Topics </h2>
