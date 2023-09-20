@@ -1,4 +1,6 @@
 ﻿
+using static StringCalculator.StringCalculator;
+
 namespace StringCalculator;
 
 public class StringCalculatorTests
@@ -76,11 +78,15 @@ public class StringCalculatorTests
     }
 
     [Theory]
-    [InlineData("//;\n1;2")]
+
+    [InlineData("-1")]
+    [InlineData("1,2,3,4,5,6,7,8,900,-300,1000")]
+    [InlineData("1,2,3,4,5,6,7,8\n900,-300,1000")]
+    [InlineData("//-\n1-2-1")]
     public void NegativeNumbersNotAllowed(string numbers)
     {
         var calculator = new StringCalculator();
 
-        Assert.Throws<NoNegativenumbersException>(() => calculator.Add(numbers));
+        Assert.Throws<NoNegativeNumbersException>(() => calculator.Add(numbers));
     }
 }

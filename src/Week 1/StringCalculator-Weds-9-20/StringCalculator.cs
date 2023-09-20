@@ -8,19 +8,16 @@ public class StringCalculator
     {
 
         if (numbers == "") { return 0; }
-        if (numbers.Contains('-'))
-        {
-            throw new NonNegativeNumbersException();
-        }
+        GuardAgainstNegativeNumbers(numbers);
         var (delimiters, processedNumbers) = ProcessNumbers(numbers);
         return processedNumbers.Split(delimiters.ToArray()).Select(int.Parse).Sum();
 
     }
-    private static void NonNegativeNumbersException(string numbers)
+    private static void GuardAgainstNegativeNumbers(string numbers)
     {
         if (numbers.Contains('-'))
         {
-            throw new NonNegativeException();
+            throw new NoNegativeNumbersException();
         }
     }
 
@@ -40,4 +37,6 @@ public class StringCalculator
         }
         return (delimiters.ToArray<char>(), numbers);
     }
+
+    public class NoNegativeNumbersException : ArgumentOutOfRangeException { };
 }
