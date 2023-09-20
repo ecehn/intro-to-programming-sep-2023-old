@@ -14,7 +14,7 @@ public class OverdraftNotAllowed
         var account = new Account();
         var openingBalance = account.GetBalance();
 
-        var amountToWithdraw = openingBalance + 0.01M;
+        var amountToWithdraw = TransactionValueTypes.Withdrawal.CreateFrom(openingBalance + 0.01M);
 
         // When
         try
@@ -40,7 +40,7 @@ public class OverdraftNotAllowed
         var account = new Account();
         var openingBalance = account.GetBalance();
 
-        var amountToWithdraw = openingBalance + 0.01M;
+        var amountToWithdraw = TransactionValueTypes.Withdrawal.CreateFrom(openingBalance + 0.01M);
 
         // When & then
         Assert.Throws<OverdraftException>(() =>

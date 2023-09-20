@@ -10,11 +10,12 @@ public class MakingDeposits
         var account = new Account();
         var openingBalance = account.GetBalance();
         var amountToDeposit = 125.23M;
+        var deposit = TransactionValueTypes.Deposit.CreateFrom(amountToDeposit);
 
 
 
         // When
-        account.Deposit(amountToDeposit);
+        account.Deposit(deposit);
 
 
 
@@ -22,16 +23,5 @@ public class MakingDeposits
         Assert.Equal(openingBalance + amountToDeposit, account.GetBalance());
     }
 
-    [Fact]
-    public void CannotDepositInvalidValues()
-    {
-        var account = new Account();
-
-        Assert.Throws<ArgumentOutOfRangeException>(() =>
-        {
-            account.Deposit(-1);
-        });
-
-    }
 
 }

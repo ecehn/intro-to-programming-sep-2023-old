@@ -11,11 +11,12 @@ public class MakingWithdrawls
         // Given
         var account = new Account();
         var openingBalance = account.GetBalance();
+        var withdraw = TransactionValueTypes.Withdrawal.CreateFrom(amountToWithdraw);
 
 
 
         // When
-        account.Withdraw(amountToWithdraw);
+        account.Withdraw(withdraw);
 
 
 
@@ -26,8 +27,8 @@ public class MakingWithdrawls
     public void CantakeEntireBalance()
     {
         var account = new Account();
-
-        account.Withdraw(account.GetBalance());
+        var withdraw = TransactionValueTypes.Withdrawal.CreateFrom(account.GetBalance());
+        account.Withdraw(withdraw);
 
         Assert.Equal(0, account.GetBalance());
     }
