@@ -1,8 +1,17 @@
 ﻿using Banking.Domain;
+using Banking.UnitTests.TestDoubles;
 
 namespace Banking.UnitTests.BankAccount;
 public class OverdraftNotAllowed
 {
+    private readonly Account _account;
+    private readonly decimal _openingBalance;
+
+    public OverdraftNotAllowed()
+    {
+        _account = new Account(new DummyStandardBonusCalculator());
+        _openingBalance = _account.GetBalance();
+    }
     [Fact]
     public void BalanceDoesNotDecreaseOnOverdraft()
     {
@@ -11,15 +20,13 @@ public class OverdraftNotAllowed
         //      - if I have 5000, and I take out 6000, then I should still have 5000
 
         // Given
-        var account = new Account();
-        var openingBalance = account.GetBalance();
 
-        var amountToWithdraw = TransactionValueTypes.Withdrawal.CreateFrom(openingBalance + 0.01M);
+        var amountToWithdraw = TransactionValueTypes.Withdrawal.CreateFrom(_openingBalance + 0.01M);
 
         // When
         try
         {
-            account.Withdraw(amountToWithdraw);
+            _account.Withdraw(amountToWithdraw);
         }
         catch (OverdraftException)
         {
@@ -28,7 +35,7 @@ public class OverdraftNotAllowed
         }
         finally
         {
-            Assert.Equal(openingBalance, account.GetBalance());
+            Assert.Equal(_openingBalance, _account.GetBalance());
         }
 
     }
@@ -37,15 +44,12 @@ public class OverdraftNotAllowed
     public void OverdraftThrowsAnException()
     {
         // Given
-        var account = new Account();
-        var openingBalance = account.GetBalance();
-
-        var amountToWithdraw = TransactionValueTypes.Withdrawal.CreateFrom(openingBalance + 0.01M);
+        var amountToWithdraw = TransactionValueTypes.Withdrawal.CreateFrom(_openingBalance + 0.01M);
 
         // When & then
         Assert.Throws<OverdraftException>(() =>
         {
-            account.Withdraw(amountToWithdraw);
+            _account.Withdraw(amountToWithdraw);
         });
     }
 }

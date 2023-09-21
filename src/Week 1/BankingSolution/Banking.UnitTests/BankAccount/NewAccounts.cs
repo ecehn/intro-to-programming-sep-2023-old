@@ -1,4 +1,6 @@
 ﻿using Banking.Domain;
+using NSubstitute;
+
 namespace Banking.UnitTests.BankAccount;
 
 public class NewAccounts
@@ -8,7 +10,7 @@ public class NewAccounts
     {
         // Write the Code We Wish We Had.
         // Given
-        var account = new Account();
+        var account = new Account(Substitute.For<ICalculateBonusesForDeposits>());
 
         // When
         decimal balance = account.GetBalance();
