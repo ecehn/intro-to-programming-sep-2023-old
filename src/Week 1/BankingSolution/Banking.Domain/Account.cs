@@ -12,24 +12,24 @@ public class Account
 
     public virtual void Deposit(TransactionValueTypes.Deposit deposit)
     {
+
         // Write the Code You Wish You Had
 
         decimal bonus = _bonusCalculator.CalculateBonusFor(this, deposit);
         _balance += deposit.Value + bonus;
 
     }
-
     public decimal GetBalance()
     {
 
         return _balance;
     }
     // "Primitive Obsession" -
-    public void Withdraw(TransactionValueTypes.Withdrawal withdraw)
+    public void Withdraw(TransactionValueTypes.Withdrawal withdrawal)
     {
-        GuardHasSufficientFunds(withdraw.Value);
+        GuardHasSufficientFunds(withdrawal.Value);
 
-        _balance -= withdraw.Value; // The important business!
+        _balance -= withdrawal.Value; // The important business!
     }
 
     private void GuardHasSufficientFunds(decimal amountToWithdraw)

@@ -1,6 +1,6 @@
 ﻿namespace Banking.Domain;
 
-public class StandardBonusCalculator
+public class StandardBonusCalculator : ICalculateBonusesForDeposits
 {
     public decimal CalculateBonusFor(Account account, TransactionValueTypes.Deposit amountToDeposit)
     {

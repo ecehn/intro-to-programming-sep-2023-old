@@ -25,6 +25,7 @@
 - Alt + F12 : Peek definition
 - Ctrl + K + S : Surround
 - Ctrl + Shift + V : Clipboard history
+- Ctrl + R + R: Rename and replace
 </p>
 
 <h2> Topics </h2>
