@@ -33,10 +33,10 @@ public class StandardBusinessClock : IProvideTheBusinessClock
 
         var openingNext = dayOfTheWeek switch
         {
-            DayOfWeek.Friday => now.AddDays(3),
+            DayOfWeek.Friday => hour < openingTime.Hours ? now : now.AddDays(3),
             DayOfWeek.Saturday => now.AddDays(2),
             DayOfWeek.Sunday => now.AddDays(1),
-            _ => now.AddDays(1)
+            _ => hour < openingTime.Hours ? now : now.AddDays(1)
         };
 
         openingNext = openingNext.Date.Add(openingTime);
